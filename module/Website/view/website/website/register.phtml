@@ -1,0 +1,83 @@
+<div id="header"><?= $this->render('layout/header.phtml') ?></div>
+<body>
+<div class="container">
+    <?php
+    $url_links = array(
+        'home'=>$this->url('admin', array('controller'=>'Website', 'action'=>'index')),
+        'register'=>$this->url('admin', array('controller'=>'Website','action'=>'createAdminUser'))
+    );
+
+    ?>
+    <p style="vertical-align:middle">
+    <center><h3 class="muted">Shiri Admin Register</h3></center>
+    <p><center><br/></center></p>
+    <p><center><hr width ="700"/></center></p>
+    <center>
+<!--        <!-- register form -->
+<!--        <form method="post" action="register.php" name="registerform" class="form-signin" style="width:250px; border:solid 1px #cccccc; border-style:ridge; padding: 20px;">-->
+<!---->
+<!--            <!-- the user name input field uses a HTML5 pattern check -->
+<!--            <label for="login_input_username">Username (only letters and numbers, 2 to 64 characters)</label>-->
+<!--            <input id="login_input_username" class="login_input" type="text" placeholder="User Name" pattern="[a-zA-Z0-9]{2,64}" name="user_name" required />-->
+<!---->
+<!--            <!-- the email input field uses a HTML5 email type check -->
+<!--            <label for="login_input_email">User's email</label>-->
+<!--            <input id="login_input_email" class="input-block-level" type="email" placeholder="Email" name="user_email" required />-->
+<!---->
+<!--            <label for="login_input_password_new">Password (min. 6 characters)</label>-->
+<!--            <input id="login_input_password_new" class="input-block-level" type="password" placeholder="Password" name="user_password_new" pattern=".{6,}" required autocomplete="off" />-->
+<!---->
+<!--            <label for="login_input_password_repeat">Repeat password</label>-->
+<!--            <input id="login_input_password_repeat" class="input-block-level" type="password" placeholder="Repeat Password" name="user_password_repeat" pattern=".{6,}" required autocomplete="off" />-->
+<!--            <input type="submit" class="btn btn-large btn-primary"  name="register" value="Register" />-->
+<!---->
+<!--        </form>-->
+<!---->
+
+        <?php
+        $form = $this->form;
+        $form->setAttributes(array('action' =>$url_links['register'],
+            'method'=>'post',
+            'class'=>'form-signin',
+            'style'=>'width:250px; border:solid 1px #cccccc; border-style:ridge; padding: 20px;'
+        ))
+            ->prepare();
+        echo $this->form()->openTag($form);
+        if ($this->data){
+            if($this->data['name'])
+            $form->get('username')->setValue($this->data['name']);
+
+            if($this->data['email'])
+                $form->get('email')->setValue($this->data['email']);
+
+        }
+
+        echo $this->formCollection($form);
+
+        echo $this->form()->closeTag();
+
+        if ($this->messages){
+            echo '<ul>';
+            foreach($this->messages as $message)
+            {
+                echo '<li>'.$message.'</li>';
+              //  echo "<script type='text/javascript'>alert($message.'')</script>";
+//                $flash = $this->flashMessenger();
+//
+//                echo $flash->render('error',   array('alert', 'alert-dismissible', 'alert-danger'));
+//                echo $flash->render('info',    array('alert', 'alert-dismissible', 'alert-info'));
+//                echo $flash->render('default', array('alert', 'alert-dismissible', 'alert-warning'));
+//                echo $flash->render('success', array('alert', 'alert-dismissible', 'alert-success'));
+            }
+            echo '</ul>';
+        }
+        ?>
+        <a href= "<?php  echo $url_links['home'] ?>">Back to Login Page</a>
+    </center>
+    <p><center><hr width ="700"/></center></p>
+    </p>
+
+</div>
+
+<!--</body>-->
+<div id="footer"><?= $this->render('layout/footer.phtml') ?></div>

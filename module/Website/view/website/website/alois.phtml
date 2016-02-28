@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://tarruda.github.io/bootstrap-datetimepicker/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Date/Time Picker for Twitter Bootstrap">
+
+    <meta name="author" content="Thiago de Arruda">
+    <title>Bootstrap Date/Time Picker</title>
+
+    <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon',
+        'href' => $this->basePath() . '/img/favicon.ico'))
+        ->prependStylesheet($this->basePath('css/bootstrap.min.css' ))
+        ->prependStylesheet($this->basePath('css/bootstrap.css' ))
+        ->prependStylesheet($this->basePath('build/css/bootstrap-datetimepicker.min.css' ))
+        ->prependStylesheet($this->basePath('http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css' ))
+        ->prependStylesheet($this->basePath('BootstrapDate_TimePicker_files/js/bootstrap-datetimepicker.min.css' ));
+    // <!-- Scripts -->
+    ?>
+    <?php echo $this->headScript()
+        ->prependFile($this->basePath('BootstrapDate_TimePicker_files/jquery.min.js'))
+        ->prependFile($this->basePath('src/js/bootstrap-datetimepicker.js'))
+        ->prependFile($this->basePath('BootstrapDate_TimePicker_files/bootstrap.min.js'));
+    ?>
+
+</head>
+<body>
+<div class="outer">
+    <!-- header -->
+    <div id="header-wrap" class="row-fluid">
+        <a href="https://github.com/tarruda/bootstrap-datetimepicker"><img style="position: absolute; top: 0; right: 0; border: 0;" src="./Bootstrap Date_Time Picker_files/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
+        <header class="span6 offset3">
+            <h1>bootstrap-datetimepicker</h1>
+            <h2>Date/Time Picker for Twitter Bootstrap</h2>
+            <section id="downloads" class="pull-right">
+                <div class="img"></div>
+                <a class="zip-download-link" href="https://tarruda.github.io/bootstrap-datetimepicker/assets/dist/bootstrap-datetimepicker-0.0.11.zip">
+              <span class="download-descr">
+                Download this project as a .zip file
+              </span>
+                </a>
+            </section>
+        </header>
+    </div>
+    <!-- content -->
+    <div id="main-content-wrap" class="row-fluid">
+        <section id="main-content" class="span6 offset3">
+            <h3 id="introduction">Introduction</h3>
+
+         <div class="well">
+                <div class="input-append date" id="datetimepicker1">
+                    <input data-format="dd/MM/yyyy hh:mm:ss" type="text">
+    <span class="add-on">
+      <i data-date-icon="icon-calendar" data-time-icon="icon-time" class="icon-calendar">
+      </i>
+    </span>
+                </div>
+            </div>
+            <script type="text/javascript">
+                $(function() {
+                    $('#datetimepicker1').datetimepicker({
+                        language: 'pt-BR'
+                    });
+                });
+            </script>
+
+            <div class="well">
+                <div class="input-append" id="datetimepicker2">
+                    <input data-format="MM/dd/yyyy HH:mm:ss PP" type="text">
+    <span class="add-on">
+      <i data-date-icon="icon-calendar" data-time-icon="icon-time" class="icon-calendar">
+      </i>
+    </span>
+                </div>
+            </div><script type="text/javascript">
+                $(function() {
+                    $('#datetimepicker2').datetimepicker({
+                        language: 'en',
+                        pick12HourFormat: true
+                    });
+                });
+            </script>
+
+            <h4 id="disables_date_picker">Disables date picker:</h4>
+            <div class="well">
+                <div class="input-append" id="datetimepicker3">
+                    <input data-format="hh:mm:ss" type="text">
+    <span class="add-on">
+      <i data-date-icon="icon-calendar" data-time-icon="icon-time" class="icon-time">
+      </i>
+    </span>
+                </div>
+            </div>
+            <script type="text/javascript">
+                $(function() {
+                    $('#datetimepicker3').datetimepicker({
+                        pickDate: false
+                    });
+                });
+            </script> <div class="well">
+                <div id="datetimepicker1" class="input-append date">
+                    <input data-format="dd/MM/yyyy hh:mm:ss" type="text"/>
+        <span class="add-on">
+          <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+          </i>
+        </span>
+                </div>
+            </div>
+            <h4 id="disables_date_picker">Disables date picker:</h4>      <h4 id="disables_date_picker">Disables date picker:</h4>      <h4 id="disables_date_picker">Disables date picker:</h4>
+        </section>
+    </div>
+    <!-- footer  -->
+
+</div>
+
+<?php
+//<!-- Bootstrap Core JavaScript -->
+$this->inlineScript()
+    ->prependFile($this->basePath('BootstrapDate_TimePicker_files/bootstrap-datetimepicker.min.js'))
+    ->prependFile($this->basePath('BootstrapDate_TimePicker_files/bootstrap-datetimepicker.pt-BR.js'))
+    ->prependFile($this->basePath('BootstrapDate_TimePicker_files/index.js'))
+    ->prependFile($this->basePath('BootstrapDate_TimePicker_files/respond.min.js'));
+$this->inlineScript()->captureStart();
+echo <<<JS
+   $(function () { formInit(); });
+
+JS;
+$this->inlineScript()->captureEnd();
+echo $this->inlineScript();
+?>
+</body></html>

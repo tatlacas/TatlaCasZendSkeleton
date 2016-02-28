@@ -1,0 +1,118 @@
+<?php
+use Application\SysConfigs\ProductInfo;
+echo $this->doctype();
+
+$url_links = array(
+    'form-action'=>$this->url('user',
+            array('controller' =>'Authentication','action'=>'index')),
+
+);
+?>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <?php echo $this->headTitle(ProductInfo::PRODUCT_NAME)->setSeparator(' - ')->setAutoEscape(false)?>
+
+    <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0')?>
+
+    <!-- Le styles -->
+    <?php
+
+    echo $this->headLink(array(
+        'rel' => 'shortcut icon',
+        'type' => 'image/vnd.microsoft.icon',
+        'href' => $this->basePath() . '/img/favicon.ico'
+    ))
+        ->prependStylesheet($this->basePath() . '/css/signin/style.css')
+        ->prependStylesheet($this->basePath() . '/css/signin/screen.css')
+    ?>
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]>
+<div style=' clear: both; text-align:center; position: relative;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+        <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+    </a>
+</div>
+
+<![endif]-->
+
+<div class="wrapper">
+    <div class="google-header-bar  centered">
+        <div class="header content clearfix">
+            <img alt="<?php echo ProductInfo::MANUFACTURER ?>" class="logo" src="">
+        </div>
+    </div>
+    <div class="main content clearfix">
+        <div class="banner">
+            <h1>
+                <?php echo ProductInfo::TAG_LINE ?>
+            </h1>
+            <h2 class="hidden-small">
+                Sign in to continue to <?php echo ProductInfo::PRODUCT_NAME ?>
+            </h2>
+        </div>
+        <div class="card signin-card clearfix" id="signin-card">
+
+            <?php
+            //Incorrect sign in credentials, Javascript disabled
+            if(isset($this->incorrect_credentials) & $this->incorrect_credentials)
+            {
+                echo '<div class="alert alert-danger" id="incorrect-credentials"> Incorrect Sign in Information </div>';
+            }
+            ?>
+
+            <img class="profile-img" src="<?php echo $this->basePath('/images/avatar_2x.png') ?>" alt="">
+            <p class="profile-name"></p>
+            <form novalidate="" method="post" action="<?php echo $url_links["form-action"] ?>" id="gaia_loginform">
+                <label for="Username">Username</label>
+            <input id="Username" name="Username" type="text" placeholder="Enter Username" value="" spellcheck="false" class="">
+                <label for="Passwd">Password</label>
+                <input id="Passwd" name="Passwd" type="password" placeholder="Enter Password" value="" class="">
+                <input id="signIn" name="signIn" class="rc-button rc-button-submit" type="submit" value="Sign in">
+
+                <a id="link-forgot-passwd" href="" class="need-help-reverse">
+                    Forgot Sign in Credentials?
+                </a>
+            </form>
+        </div>
+    </div>
+    <div class="google-footer-bar">
+        <div class="footer content clearfix">
+            <ul id="footer-list">
+                <li>
+                    Copyright &copy; 2013 - <?php echo date('Y') . ' ' . ProductInfo::MANUFACTURER ?>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        Privacy &amp; Terms
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        Help
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- JavaScript -->
+<?php
+
+echo $this->headScript()
+    ->prependFile($this->basePath() . '/js/signin/signin.js')
+    ->prependFile($this->basePath() . '/js/bootstrap.js')
+    ->prependFile($this->basePath() . '/js/jquery-1.10.2.js')
+    ->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array(
+            'conditional' => 'lt IE 9'
+        ))?>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<?php
+use Application\Model\Constants;
+use Application\SysConfigs\ProductInfo;
+echo $this->doctype(); ?>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="Alois Mumera mumeraalois@gmail.com">
+	<?php echo $this->headTitle(Constants::ADMIN_LOGIN )->setSeparator(' - ')->setAutoEscape(false) ?>
+
+	<?php echo $this->headMeta()
+		->appendName('viewport', 'width=device-width, initial-scale=1.0')
+		->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+	?>
+
+	<!-- Le styles -->
+	<?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon',
+		'href' => $this->basePath() . '/img/favicon.ico'))
+		->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
+		->prependStylesheet($this->basePath('css/bootstrap.min.css'))
+		->prependStylesheet($this->basePath('bower_components/metisMenu/dist/metisMenu.min.css'))
+		->prependStylesheet($this->basePath('css/sb-admin-2.css'))
+		->prependStylesheet($this->basePath('css/timeline.css'))
+		->prependStylesheet($this->basePath('bower_components/morrisjs/morris.css'))
+		->prependStylesheet($this->basePath('bower_components/font-awesome/css/font-awesome.min.css'))
+		->prependStylesheet($this->basePath('bower_components/bootstrap/dist/css/bootstrap.min.css')) ?>
+
+	<!-- Scripts -->
+	<?php echo $this->headScript()
+		->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+		->prependFile($this->basePath('js/html5shiv.min.js'),   'text/javascript', array('conditional' => 'lt IE 9',))
+	; ?>
+
+</head>
+<body>
+
+	<!--[if lt IE 9]>
+
+            <div class="alert alert-warning alert-dismissable">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+         Please note that your current browser is no longer supported by <?php echo ProductInfo::PRODUCT_NAME ?> therefore most required functionality may not work.
+        You may follow the link below to upgrade your browser (or alternatively use a different browser such as Mozilla Firefox or Google Chrome.)
+    <br/> <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="For a faster, safer browsing experience, upgrade for free today" />
+    </a>
+  </div>
+
+<![endif]-->
+	<div id="wrapper">
+		<?php
+
+		echo $this->content;?>
+	</div>
+
+	<?php
+	//<!-- Bootstrap Core JavaScript -->
+	echo $this->inlineScript()->prependFile($this->basePath('js/bootstrap.min.js'))
+		//<!-- jQuery -->
+		->prependFile($this->basePath('js/jquery.min.js'))
+//     <!-- Custom Theme JavaScript -->
+		->prependFile($this->basePath('js/sb-admin-2.js'));
+	?>
+
+
+<div id = "footer">
+	Copyright &copy; <?php
+
+	echo date('Y') . ' ' . Constants::SHIRI_NAME.'  '.'Privacy &amp; Terms' ?>
+
+</div>
+</body>
+</html>
+
